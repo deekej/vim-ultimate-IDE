@@ -697,8 +697,16 @@ inoremap <<                   <><Left>
 inoremap <<<CR>               <<CR>><Esc>O<Tab>
 inoremap <<<Esc>              <<
 inoremap <<<Right>            <<
+inoremap <<<Space>            <<<Space>
 inoremap <<<C-Space>          <><Left>
 inoremap <<<                  <<<
+
+
+" =============================================================================
+" Custom mapping for comments autocompletion:
+" =============================================================================
+
+inoremap //                   //<Space>
 
 
 " =============================================================================
@@ -747,6 +755,7 @@ autocmd FileType,BufRead *.spec nested :TagbarOpen  setlocal nospell textwidth=1
 
 " Mavenir specific:
 autocmd FileType,BufRead *.msg  setlocal filetype=yaml
+
 
 " =============================================================================
 " Tips & tricks (a.k.a. stuff I tend to forget):
