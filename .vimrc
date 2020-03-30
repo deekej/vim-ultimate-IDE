@@ -748,3 +748,7 @@ autocmd FileType,BufRead *.msg  setlocal filetype=yaml
 "   > zm - close all
 "   > zo - open current
 "   > zc - close current
+"
+" 3. Shifting indentation in Insert Mode:
+"   > Ctrl+T - indent 1 tab-width to the right
+"   > Ctrl+D - indent 1 tab-width to the left
