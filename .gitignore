@@ -1,0 +1,14 @@
+# Ignore contents of these folders:
+backups/*
+bundle/*
+cache/*
+swap/*
+
+# Make sure to track/keep the files below:
+!backups/.gitkeep
+!bundle/.gitkeep
+!cache/.gitkeep
+!swap/.gitkeep
+
+!.vimrc
+!.gvimrc
