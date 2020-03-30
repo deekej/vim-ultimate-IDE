@@ -312,6 +312,7 @@ set shiftwidth=2                          " Sets the default indent width.
 set softtabstop=2                         " Sets the number of columns per TAB.
 
 " Indentation settings:
+set nosmartindent                         " Making sure the deprecated indenting is not being used.
 set autoindent                            " Copy indent from current line for a new line.
 set cindent                               " C-style indentation [required by Doxygen Toolkit plugin].
 set shiftround                            " Round indents to multiple of 'shiftwidth' settings.
@@ -389,7 +390,6 @@ colorscheme github
 " Additional tweaks & fixes:
 " =============================================================================
 autocmd VimEnter * let @/ = ""            " Disabling the last highlight after new startup.
-
 " --------------------------
 
 " Jump to a last position in a file after opening it (uses .viminfo file).
@@ -468,6 +468,13 @@ highlight DiffText cterm=none ctermfg=black ctermbg=Magenta gui=none guifg=black
 
 " Fix for VIM inserting '<S-Del>' in Insert mode when accidentally presed:
 inoremap <S-Del>        <Del>
+
+" --------------------------
+
+" Do not use shift (indent) '#'-style comments:
+" > https://vim.fandom.com/wiki/Restoring_indent_after_typing_hash
+set cinkeys-=0#
+set indentkeys-=0#
 
 " --------------------------
 
