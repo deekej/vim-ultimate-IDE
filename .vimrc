@@ -752,3 +752,9 @@ autocmd FileType,BufRead *.msg  setlocal filetype=yaml
 " 3. Shifting indentation in Insert Mode:
 "   > Ctrl+T - indent 1 tab-width to the right
 "   > Ctrl+D - indent 1 tab-width to the left
+
+" =============================================================================
+" TODO notes:
+" =============================================================================
+" 1) Add script/function to automatically generate .ctags if they are missing.
+"   ->> Use keyboard button for it?
