@@ -42,8 +42,7 @@ Plugin 'gregsexton/gitv'                  " Repository viewer built upon 'vim-fu
 
 " Generic Programming Support:
 Plugin 'vim-syntastic/syntastic'          " Plugin for external syntax checkers.
-" FIXME: Temporarily disabled, because this plugin is causing mapping issues.
-"Plugin 'honza/vim-snippets'               " Snippets for UltiSnips
+Plugin 'honza/vim-snippets'               " Snippets for UltiSnips
 Plugin 'tobys/vmustache'                  " Allows usage of mustache templates in VIM
 Plugin 'neomake/neomake'                  " Asynchronous linting and make framework
 Plugin 'vim-scripts/doxygentoolkit.vim'   " Simplifies generating of Doxygen documentation
@@ -392,7 +391,7 @@ colorscheme github
 autocmd VimEnter * let @/ = ""            " Disabling the last highlight after new startup.
 
 " --------------------------
-"
+
 " Jump to a last position in a file after opening it (uses .viminfo file).
 autocmd BufReadPost *
   \ if line("'\"") > 1 && line("'\"") <= line("$")
