@@ -180,7 +180,11 @@ map <silent> <C-M> :TagbarToggle<CR>
 let g:deoplete#enable_at_startup = 1      " Enables Deoplete automatically
 
 " Disable automatic completion (manual only), etc.
-call deoplete#custom#option({'auto_complete': v:false, 'camel_case': v:true, 'smart_case': v:true })
+try
+  call deoplete#custom#option({'auto_complete': v:false, 'camel_case': v:true, 'smart_case': v:true })
+catch
+  :
+endtry
 
 " ----------------
 " SuperTab config:
