@@ -478,6 +478,10 @@ set indentkeys-=0#
 
 " --------------------------
 
+autocmd! VimEnter COMMIT_EDITMSG exec 'norm gg' | startinsert!
+
+" --------------------------
+
 " Automatic removal of trailing whitespaces:
 "autocmd BufWritePre * :%s/\s\+$//e
 
