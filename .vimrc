@@ -191,8 +191,8 @@ let g:SuperTabMappingBackward = '<C-S-CR>'
 " -----------------
 " Syntastic config:
 " -----------------
-let g:syntastic_c_checkers = ['clang_check']
-let g:syntastic_cpp_checkers = ['clang_check']
+let g:syntastic_c_checkers = ['clang-check']
+let g:syntastic_cpp_checkers = ['clang-check']
 let g:syntastic_python_checkers = ['pylint']
 
 let g:syntastic_error_symbol = '✗'
