@@ -510,6 +510,10 @@ inoremap <S-Tab> <C-V><Tab>
 noremap  <silent> <C-Backspace> <Del>
 inoremap <silent> <C-Backspace> <Del>
 
+" Ctrl+Shift+Backspace - hungry delete of all whitespaces until the previous word:
+noremap  <silent> <C-S-Backspace> v^<Right>d
+inoremap <silent> <C-S-Backspace> <Esc>v^<Right>c
+
 " Manually removal of trailing whitespaces by pressing Ctrl+Delete:
 noremap  <silent> <C-Del> <Esc>:%s/\s\+$//e<CR>
 inoremap <silent> <C-Del> <Esc>:%s/\s\+$//e<CR>a
