@@ -213,8 +213,8 @@ let g:syntastic_check_on_wq = 0
 "   passive - check syntax only after calling :SyntasticCheck
 let g:syntastic_mode_map = {
     \ "mode": 'active',
-    \ "active_filetypes": ['c', 'cpp', 'python', 'sh'],
-    \ "passive_filetypes": ['php', 'perl'] }
+    \ "active_filetypes": ['c', 'cpp', 'python', 'php', 'sh'],
+    \ "passive_filetypes": ['perl'] }
 
 " Make the Syntastic window smaller if few than 5 errors are found:
 function! SyntasticCheckHook(errors)
