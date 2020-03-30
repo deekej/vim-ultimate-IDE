@@ -383,8 +383,17 @@ endif
 " whitespaces. Also sets wrapping characters...
 set list listchars=tab:»\ ,trail:·,nbsp:␣,precedes:<,extends:>
 
-" Temporary set colorscheme before other is chosen:
-colorscheme github
+" Use custom colorscheme:
+try
+  colorscheme github
+catch
+  " Fallback mechanism for inital bootstrapping:
+  if &background ==# 'dark'
+    colorscheme ron
+  else
+    colorscheme peachpuff
+  endif
+endtry
 
 " =============================================================================
 " Additional tweaks & fixes:
