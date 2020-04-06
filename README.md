@@ -22,12 +22,12 @@ sudo pip3 install pynvim
 ```
 **NOTE:** I'm using this VIM configuration for both root & my local user. Therefore I install pynvim system-wide. If you do not have root permissions, or you just want to install this config for your local user only, add the `--user` parameter after the `install` command.
 
-**NOTE:** I suggest prior to next step to make a backup of your existing `.vimrc` / `.gvimrc` configuration, as well as the `.vim` folder. 
-
 Next, clone this git repository (it already includes the [Vundle](https://github.com/VundleVim/Vundle.vim) plugin manager for VIM as a git submodule):
 ```bash
 cd ~/
-rm -rf .vim/
+mv .vim/ .vim.old/
+mv .vimrc .vim.old/.vimrc
+mv .gvimrc .vim.old/.gvimrc
 git clone --recurse-submodules https://github.com/deekej/vim-ultimate-IDE.git .vim/
 ```
 
