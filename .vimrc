@@ -55,6 +55,7 @@ Plugin 'vim-scripts/doxygentoolkit.vim'   " Simplifies generating of Doxygen doc
 " Syntax Higlighting:
 Plugin 'octol/vim-cpp-enhanced-highlight' " Advanced highlighting for C/C++ files
 Plugin 'vim-python/python-syntax'         " Ehnanced Python highlighting
+Plugin 'rodjek/vim-puppet'                " Additional highlighting for Puppet
 
 " Markdown / Writting:
 Plugin 'reedes/vim-pencil'                " Soft & Hard wrapping for text & markdown files.
