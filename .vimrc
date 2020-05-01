@@ -150,8 +150,11 @@ endfunction
 " VIM-devicons config:
 " --------------------
 set encoding=UTF-8
-set guifont=DejaVuSansMono\ Nerd\ Font\ 11
+set guifont=Hack\ Nerd\ Font\ 11
 let g:airline_powerline_fonts = 1         " Allows using 'vim-devicons' alongside with 'vim-airline'.
+
+" Previously used font:
+"set guifont=DejaVuSansMono\ Nerd\ Font\ 11
 
 " --------------
 " Tagbar config:
