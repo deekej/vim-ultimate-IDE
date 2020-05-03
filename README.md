@@ -26,14 +26,14 @@ Next, clone this git repository (it already includes the [Vundle](https://github
 ```bash
 cd ~/
 mv .vim/ .vim.old/
-mv .vimrc .vim.old/.vimrc
-mv .gvimrc .vim.old/.gvimrc
+mv .vimrc .vim.old/vimrc
+mv .gvimrc .vim.old/gvimrc
 git clone --recurse-submodules https://github.com/deekej/vim-ultimate-IDE.git .vim/
 ```
 
 Last you will need to finish the bootstrap process:
 ```bash
-ln -sf ~/.vim/.vimrc ~/.vimrc
+ln -sf ~/.vim/vimrc ~/.vimrc
 ln -sf ~/.vim/fonts  ~/.local/share/fonts/dejavu-nerd
 fc-cache -v
 vim +PluginInstall +qall
