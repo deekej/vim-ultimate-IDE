@@ -5,7 +5,7 @@ cache/*
 swap/*
 
 # Ignore these files:
-fonts/.uuid
+fonts/*/.uuid
 
 # Make sure to track/keep the files below:
 !backups/.gitkeep
