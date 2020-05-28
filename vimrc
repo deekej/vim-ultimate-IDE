@@ -64,7 +64,6 @@ Plugin 'junegunn/goyo.vim'                " Adds mode for distraction-free writi
 "Plugin 'tpope/vim-markdown'               " Should be already included in recent versions of VIM
 
 " Interface:
-
 Plugin 'junegunn/limelight.vim'           " Enables darkening of text in other areas
 Plugin 'vim-scripts/ansiesc.vim'          " Conceals ASCII escape sequences (transforming them into colors, etc.)
 Plugin 'vim-airline/vim-airline'          " Status/tab line at the bottom of VIM
@@ -535,7 +534,7 @@ inoremap <silent> <C-Backspace> <Del>
 noremap  <silent> <C-S-Backspace> v^<Right>d
 inoremap <silent> <C-S-Backspace> <Esc>v^<Right>c
 
-" Manually removal of trailing whitespaces by pressing Ctrl+Delete:
+" Manual removal of trailing whitespaces by pressing Ctrl+Delete:
 noremap  <silent> <C-Del> <Esc>:%s/\s\+$//e<CR>
 inoremap <silent> <C-Del> <Esc>:%s/\s\+$//e<CR>a
 
