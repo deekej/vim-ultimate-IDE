@@ -762,9 +762,9 @@ autocmd FileType,BufRead *.H                        setlocal   spell textwidth=1
 autocmd FileType,BufRead *.sh                       setlocal   spell textwidth=120
 autocmd FileType,BufRead *.py                       setlocal   spell textwidth=79  | let &colorcolumn="73,80"
 autocmd FileType,BufRead *.php                      setlocal   spell textwidth=120
-autocmd FileType,BufRead *.tex  nested :TagbarOpen  setlocal   spell textwidth=120
+autocmd FileType,BufRead *.tex                      setlocal   spell textwidth=120
 
-autocmd FileType,BufRead *.spec nested :TagbarOpen  setlocal nospell textwidth=120
+autocmd FileType,BufRead *.spec                     setlocal nospell textwidth=120
 
 "let &colorcolumn="81,121,161"
 
