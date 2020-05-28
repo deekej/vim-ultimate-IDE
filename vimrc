@@ -636,6 +636,16 @@ inoremap <silent> <F10> <Esc>:execute 'silent! tabmove ' . (tabpagenr() - 2)<CR>
 noremap <silent> <F11> :execute 'silent! tabmove ' . (tabpagenr() + 1)<CR>
 inoremap <silent> <F11> <Esc>:execute 'silent! tabmove ' . (tabpagenr() + 1)<CR>
 
+" Quick shortcut for starting Tabular:
+"   > Pressing <AltGr>Q followed by <Tab>, you can quickly write a character
+"     to be used for automatic text aligning, and pressing <Enter> to apply it.
+"   > If you follow thea alignment character with: \zs
+"     Then the alignment will be done based on the character that follows the
+"     one you have specified. This can be useful e.g. for YAML files, etc.
+if exists(':Tabularize')
+   noremap  <Leader><Tab>   :Tab /
+  vnoremap  <Leader><Tab>   :Tab /
+endif
 
 " =============================================================================
 " Custom automatic appending of closing characters:
