@@ -123,7 +123,7 @@ let NERDTreeSortOrder = ['\/$', '\.h$', '\.hh$', '\.hpp$', '\.c$', '\.cc$', '\.c
 "autocmd VimEnter * if argc() == 1 &&  isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
 
 " Toggle displaying of NERDTree by pressing Ctrl+N:
-map <silent> <C-N> :NERDTreeToggle<CR>
+map <silent> <C-N> :NERDTreeToggle<CR><A-Right>
 
 " Function for specific filetype highlighting in NERDTree:
 function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
@@ -168,7 +168,7 @@ let g:tagbar_show_linenumbers = 1         " Show absolute line numbers for the t
 let g:tagbar_autoshowtag=1                " Automatically open VIM folds (completely) when jumping to a tag from Tagbar.
 
 " Toggle displaying of Tagbar by pressing Ctrl+M:
-map <silent> <C-M> :TagbarToggle<CR>
+map <silent> <C-M> :TagbarToggle<CR><A-Left>
 
 " NOTE: Tagbar highlighting colors can be changed. See :help tagbar.txt - section HIGHLIGHT COLOURS.
 
