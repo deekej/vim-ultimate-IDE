@@ -352,6 +352,8 @@ set foldnestmax=1                         " Do not fold more than 1 level (i.e. 
 
 " VIM window settings:
 set showtabline=2                         " Always show tab pages.
+set guioptions+=rR                        " Enable always-on scrollbar the right side
+set guioptions+=lL                        " Enable always-on scrollbar the left side instead
 
 " DIFF settings:
 set diffopt+=internal                     " Make sure to use internal libxdiff library (same as GIT).
