@@ -53,9 +53,7 @@ Plugin 'vim-scripts/doxygentoolkit.vim'   " Simplifies generating of Doxygen doc
 "Plugin 'jakedouglas/exuberant-ctags'      " We are using Universal Ctags instead (installed system-wide)
 
 " Syntax Higlighting:
-Plugin 'octol/vim-cpp-enhanced-highlight' " Advanced highlighting for C/C++ files
-Plugin 'vim-python/python-syntax'         " Ehnanced Python highlighting
-Plugin 'rodjek/vim-puppet'                " Additional highlighting for Puppet
+Plugin 'sheerun/vim-polyglot'             " Bundle of enhanced syntax highlighting for most used languages
 
 " Markdown / Writting:
 Plugin 'reedes/vim-pencil'                " Soft & Hard wrapping for text & markdown files.
@@ -86,7 +84,7 @@ Plugin 'atelierbram/base2tone-vim'        " Base2Tone theme
 
 "Plugin 'rainglow/vim'                     " 320+ syntax & UI themes
 
-Plugin 'ryanoasis/vim-devicons'           " Enable icons for NERDTree [XXX: this must be last!]
+Plugin 'ryanoasis/vim-devicons'           " Enable icons for NERDTree [XXX: this must be the last!]
 
 " STOP Vundle loading:
 call vundle#end()                         " Required by Vundle.
