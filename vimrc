@@ -785,6 +785,8 @@ autocmd FileType,BufRead *.msg  setlocal filetype=yaml
 " 3. Shifting indentation in Insert Mode:
 "   > Ctrl+T - indent 1 tab-width to the right
 "   > Ctrl+D - indent 1 tab-width to the left
+"
+" 4. All plugins ared loaded AFTER the .vimrc has been read!
 
 " =============================================================================
 " TODO notes:
