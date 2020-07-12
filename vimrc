@@ -521,7 +521,7 @@ cabbrev maek  make
 " --------------------------
 
 " Canceling search highlight by pressing ESC 2-times:
-noremap <silent> <Esc><Esc> <Esc>:nohlsearch<CR>
+noremap  <silent> <Esc><Esc> <Esc>:nohlsearch<CR>
 
 " Inserts the actual TAB character with Shift+Tab:
 inoremap <S-Tab> <C-V><Tab>
@@ -578,8 +578,8 @@ inoremap <silent> <S-F3> <Esc>:set tabstop=8 softtabstop=8 shiftwidth=8<CR>a
 "   > Alt + Shift + O     -- split window horizontally
 "   > Alt + Cursor Keys   -- navigation between windows
 "   > Ctrl + (Shift) + W  -- close current window - same as :q command
-noremap <A-S-I> <C-W>v
-noremap <A-S-O> <C-W>s
+noremap  <A-S-I> <C-W>v
+noremap  <A-S-O> <C-W>s
 
 noremap  <C-S-W> <C-W>c
 inoremap <C-S-W> <C-W>c
@@ -628,10 +628,10 @@ inoremap <silent> <C-S-Down> <Esc>:tablast<CR>
 " Rearranging tab pages position:
 "   > F10 -- move tab to the left
 "   > F11 -- move tab to the right
-noremap <silent> <F10> :execute 'silent! tabmove ' . (tabpagenr() - 2)<CR>
+noremap  <silent> <F10> :execute 'silent! tabmove ' . (tabpagenr() - 2)<CR>
 inoremap <silent> <F10> <Esc>:execute 'silent! tabmove ' . (tabpagenr() - 2)<CR>
 
-noremap <silent> <F11> :execute 'silent! tabmove ' . (tabpagenr() + 1)<CR>
+noremap  <silent> <F11> :execute 'silent! tabmove ' . (tabpagenr() + 1)<CR>
 inoremap <silent> <F11> <Esc>:execute 'silent! tabmove ' . (tabpagenr() + 1)<CR>
 
 " Quick shortcut for starting Tabular:
