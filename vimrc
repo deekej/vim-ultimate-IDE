@@ -640,10 +640,8 @@ inoremap <silent> <F11> <Esc>:execute 'silent! tabmove ' . (tabpagenr() + 1)<CR>
 "   > If you follow thea alignment character with: \zs
 "     Then the alignment will be done based on the character that follows the
 "     one you have specified. This can be useful e.g. for YAML files, etc.
-if exists(':Tabularize')
-   noremap  <Leader><Tab>   :Tab /
-  vnoremap  <Leader><Tab>   :Tab /
-endif
+noremap   <Leader><Tab>   :Tab /
+vnoremap  <Leader><Tab>   :Tab /
 
 " =============================================================================
 " Custom automatic appending of closing characters:
