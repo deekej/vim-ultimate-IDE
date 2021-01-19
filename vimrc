@@ -53,7 +53,9 @@ Plugin 'vim-scripts/doxygentoolkit.vim'   " Simplifies generating of Doxygen doc
 "Plugin 'jakedouglas/exuberant-ctags'      " We are using Universal Ctags instead (installed system-wide)
 
 " Syntax Higlighting:
+let g:polyglot_disabled = ['csv']         " Disabling CSV plugin completely in polyglot:
 Plugin 'sheerun/vim-polyglot'             " Bundle of enhanced syntax highlighting for most used languages
+Plugin 'mechatroner/rainbow_csv'          " We are using more lightweight CSV higlighter
 
 " Markdown / Writting:
 Plugin 'reedes/vim-pencil'                " Soft & Hard wrapping for text & markdown files.
