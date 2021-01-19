@@ -405,12 +405,20 @@ catch
 endtry
 
 " =============================================================================
-" Additional tweaks & fixes:
+" Additional tweaks, fixes & optimizations:
 " =============================================================================
 autocmd VimEnter * let @/ = ""            " Disabling the last highlight after new startup.
+
 " --------------------------
 
-" Jump to a last position in a file after opening it (uses .viminfo file).
+" Try to speedup cursor line scrolling in heavy syntax-based files:
+set lazyredraw
+set synmaxcol=128
+syntax sync minlines=256
+
+" --------------------------
+
+" Jump to a last position in a file after opening it (uses .viminfo file):
 autocmd BufReadPost *
   \ if line("'\"") > 1 && line("'\"") <= line("$")
   \     | exe "normal! g'\""
@@ -785,6 +793,9 @@ autocmd FileType,BufRead *.spec                     setlocal nospell textwidth=1
 "   > Ctrl+D - indent 1 tab-width to the left
 "
 " 4. All plugins ared loaded AFTER the .vimrc has been read!
+"
+" 5. Tips how to improve slow scrolling in VIM & NeoVIM:
+"   * https://eduncan911.com/software/fix-slow-scrolling-in-vim-and-neovim.html
 
 " =============================================================================
 " TODO notes:
