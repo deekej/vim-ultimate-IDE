@@ -736,6 +736,7 @@ augroup END
 
 " NOTE: The 'nested :TagbarOpen' automatically opens Tagbar for the specified
 "       file types, and must be called before any other setlocal commands...
+"autocmd FileType,BufRead  make  nested :TagbarOpen  setlocal nospell                noexpandtab
 autocmd FileType,BufRead  make                      setlocal nospell                noexpandtab
 
 autocmd FileType,BufRead  *.c                       setlocal   spell textwidth=80
@@ -763,11 +764,6 @@ autocmd FileType,BufRead *.php                      setlocal   spell textwidth=1
 autocmd FileType,BufRead *.tex                      setlocal   spell textwidth=120
 
 autocmd FileType,BufRead *.spec                     setlocal nospell textwidth=120
-
-"let &colorcolumn="81,121,161"
-
-" Mavenir specific:
-autocmd FileType,BufRead *.msg  setlocal filetype=yaml
 
 
 " =============================================================================
