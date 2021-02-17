@@ -326,7 +326,7 @@ set shiftround                            " Round indents to multiple of 'shiftw
 set nojoinspaces                          " Do not insert additional spaces after joining (formatting) the text.
 
 " Buffer settings:
-set clipboard=unnamed                     " Yank & paste the selection between windows without prepending the '*'.
+set clipboard=unnamed                     " Yank & paste the selection between VIM windows without prepending the '*'.
 set hidden                                " Hides the buffer instead of unloading when it is abandoned.
 
 " Status line settings:
@@ -643,6 +643,20 @@ inoremap <silent> <F10> <Esc>:execute 'silent! tabmove ' . (tabpagenr() - 2)<CR>
 
 noremap  <silent> <F11> :execute 'silent! tabmove ' . (tabpagenr() + 1)<CR>
 inoremap <silent> <F11> <Esc>:execute 'silent! tabmove ' . (tabpagenr() + 1)<CR>
+
+" Switch copying of contents between VIM windows only and all system windows:
+"   > F12 -- toggle copying behaviour
+"   > default: copy between VIM windows only
+noremap  <silent> <F12> :call ToggleClipboardMode() <CR>
+inoremap <silent> <F12> <Esc>:call ToggleClipboardMode() <CR>
+
+function! ToggleClipboardMode()
+  if (&l:clipboard == "unnamed")
+    setlocal clipboard=unnamedplus
+  else
+    setlocal clipboard=unnamed
+  endif
+endfunction
 
 " Quick shortcut for starting Tabular:
 "   > Pressing <AltGr>Q followed by <Tab>, you can quickly write a character
