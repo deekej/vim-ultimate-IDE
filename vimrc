@@ -413,7 +413,7 @@ autocmd VimEnter * let @/ = ""            " Disabling the last highlight after n
 
 " Try to speedup cursor line scrolling in heavy syntax-based files:
 set lazyredraw
-set synmaxcol=128
+set synmaxcol=512
 syntax sync minlines=256
 
 " --------------------------
