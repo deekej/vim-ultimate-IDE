@@ -780,7 +780,7 @@ autocmd FileType,BufRead *.h++                      setlocal   spell textwidth=1
 autocmd FileType,BufRead *.hp                       setlocal   spell textwidth=120
 autocmd FileType,BufRead *.H                        setlocal   spell textwidth=120
 
-autocmd FileType,BufRead *.sh                       setlocal   spell textwidth=120
+autocmd FileType,BufRead *.sh                       setlocal   spell
 autocmd FileType,BufRead *.py                       setlocal   spell textwidth=79  | let &colorcolumn="73,80"
 autocmd FileType,BufRead *.php                      setlocal   spell textwidth=120
 autocmd FileType,BufRead *.tex                      setlocal   spell textwidth=120
