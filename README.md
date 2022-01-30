@@ -1,4 +1,4 @@
-# VIM - Congiguration for ultimate IDE
+# VIM - Congiguration for ultimate IDE experience
 
 I have been using VIM for almost 10 years now, and after being so much used to it, I couldn't make a switch to some existing IDEs, no matter how I tried. As many other people, I felt it was too complicated for many tasks, and was seriously lacking in other areas, so I've decided to give a try to 'making VIM the ultimate IDE for writing & code development'. It was after I have found these 2 amazing articles:
 
@@ -16,18 +16,18 @@ Since this is my own personal VIM configuration, I won't be accepting any pull-r
 *My last note is a wish -- if you find this useful in any way, feel free to let me know, but more importantly, show some love to [@pwittchen](https://github.com/pwittchen) and [@amacgregor](https://github.com/amacgregor). Kudos to both of them -- their articles allowed me to move my VIM experience to a completely new level of efficiency and usability! ;)*
 
 # Installation
-First, you need to install **pynvim** - you can use your Linux distro official package, or *pip*:
+First, make sure you have installed plugins' dependencies - either try to install the dependencies via your Linux's distro official package manager, or alternatively you can use `pip3`:
 ```bash
-sudo pip3 install pynvim
+sudo pip3 install pynvim msgpack python-ctags3
 ```
-**NOTE:** I'm using this VIM configuration for both root & my local user. Therefore I install pynvim system-wide. If you do not have root permissions, or you just want to install this config for your local user only, add the `--user` parameter after the `install` command.
+**NOTE:** I'm using this VIM configuration for both root & my local user. Therefore I install the dependencies system-wide. If you do not have root permissions, or you just want to install this config for your local user only, add the `--user` parameter after the `install` command.
 
 Next, clone this git repository (it already includes the [Vundle](https://github.com/VundleVim/Vundle.vim) plugin manager for VIM as a git submodule):
 ```bash
 cd ~/
-mv .vim/ .vim.old/
-mv .vimrc .vim.old/vimrc
-mv .gvimrc .vim.old/gvimrc
+mv ~/.vim/ ~/.vim.old/
+mv ~/.vimrc ~/.vim.old/vimrc
+mv ~/.gvimrc ~/.vim.old/gvimrc
 git clone --recurse-submodules https://github.com/deekej/vim-ultimate-IDE.git .vim/
 ```
 
@@ -40,4 +40,11 @@ fc-cache -v
 vim +PluginInstall +qall
 ```
 
-After the steps above, you should be able to normally launch the `vim` with all of this configuration properly loaded... ;) GL&HF
+After the steps above, you should be able to normally launch the `vim` with all of this configuration properly loaded...
+
+### Neovim
+If you wish to use [Neovim](https://github.com/neovim/neovim) instead of VIM, then simply run these 2 additional commands, and Neovim should pickup the configuration automatically next time you start it:
+```
+mv ~/.config/nvim ~/.config/nvim.old
+ln -sf ~/.vim/nvim ~/.config/nvim
+```

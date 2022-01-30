@@ -5,7 +5,7 @@ set nocompatible                          " Required by Vundle.
 filetype off                              " Required by Vundle.
 
 " This is required by Vundle to initialize:
-set rtp+=~/.vim/bundle/Vundle.vim
+set runtimepath+=~/.vim/bundle/Vundle.vim
 
 " START Vundle loading:
 call vundle#begin()
@@ -27,12 +27,25 @@ Plugin 'wesq3/vim-windowswap'             " Allows swaping windows without ruini
 Plugin 'sirver/ultisnips'                 " Allows using snippets in VIM
 Plugin 'godlygeek/tabular'                " Allows rapid line-up of the text
 Plugin 'gilsondev/searchtasks.vim'        " Search tool for TODO, FIXME & XXX
-Plugin 'shougo/deoplete.nvim'             " Asynchronous completion framework
+
+" NOTE: shougo/deoplete.nvim to be replaced by shougo/ddc.vim in the future
+if has('nvim')
+  Plugin 'shougo/deoplete.nvim'           " Asynchronous completion framework
+else
+  Plugin 'shougo/deoplete.nvim'           " Asynchronous completion framework
+  Plugin 'roxma/vim-hug-neovim-rpc'       " Deoplete dependency for VIM only
+  Plugin 'roxma/nvim-yarp'                " Deoplete dependency for VIM only
+endif
 
 "Plugin 'junegunn/fzf'                     " A command-line fuzzy finder
 "Plugin 'junegunn/fzf.vim'                 " A set of basic VIM commands for FZF
 "Plugin 'tpope/vim-dispatch'               " Start asynchronous tasks from VIM
 "Plugin 'vim-scripts/bufonly.vim'          " Allow buffer deletion except current one / specified
+"Plugin 'lambdalisue/fern.vim'             " Replacement for NERDTree once it's no longer supported
+
+"if has('nvim')
+"  Plugin 'antoinemadec/FixCursorHold.nvim' " Fix for nVim only - see https://github.com/lambdalisue/fern.vim/issues/120
+"endif
 
 " Git Support:
 Plugin 'xuyuanp/nerdtree-git-plugin'      " Extension for NERDTree file browser
@@ -46,6 +59,7 @@ Plugin 'honza/vim-snippets'               " Snippets for UltiSnips
 Plugin 'tobys/vmustache'                  " Allows usage of mustache templates in VIM
 Plugin 'neomake/neomake'                  " Asynchronous linting and make framework
 Plugin 'vim-scripts/doxygentoolkit.vim'   " Simplifies generating of Doxygen documentation
+Plugin 'vim-latex/vim-latex'              " Set of tools to view, edit & compile LaTeX docs without leaving VIM
 
 "Plugin 'townk/vim-autoclose'              " Automatically closes brackets and more
 "Plugin 'ycm-core/youcompleteme'           " Alternative to deoplete auto-completion plugin above
@@ -53,38 +67,32 @@ Plugin 'vim-scripts/doxygentoolkit.vim'   " Simplifies generating of Doxygen doc
 "Plugin 'jakedouglas/exuberant-ctags'      " We are using Universal Ctags instead (installed system-wide)
 
 " Syntax Higlighting:
-let g:polyglot_disabled = ['csv']         " Disabling CSV plugin completely in polyglot:
+let g:polyglot_disabled = ['csv']         " NOTE: Disabling CSV plugin completely in polyglot
 Plugin 'sheerun/vim-polyglot'             " Bundle of enhanced syntax highlighting for most used languages
 Plugin 'mechatroner/rainbow_csv'          " We are using more lightweight CSV higlighter
+Plugin 'pearofducks/ansible-vim'          " Syntax highlighting & indentation for Ansible
+"Plugin 'Yggdroot/indentLine'              " Display vertical lines at each indentation level of code
+"Plugin 'vim-scripts/gtk-vim-syntax'       " Collection of C extension syntax files for xlib, glib, gtk3, and more...
 
-" Markdown / Writting:
+" Writing:
 Plugin 'reedes/vim-pencil'                " Soft & Hard wrapping for text & markdown files.
 Plugin 'junegunn/goyo.vim'                " Adds mode for distraction-free writing
 "Plugin 'dpelle/vim-LanguageTool'          " Grammar checker that uses natural language - requires Java 8+
 "Plugin 'tpope/vim-markdown'               " Should be already included in recent versions of VIM
 
 " Interface:
+Plugin 'wincent/terminus'                 " Better integration with terminals to close the gap between VIM & GVIM
 Plugin 'junegunn/limelight.vim'           " Enables darkening of text in other areas
 Plugin 'vim-scripts/ansiesc.vim'          " Conceals ASCII escape sequences (transforming them into colors, etc.)
 Plugin 'vim-airline/vim-airline'          " Status/tab line at the bottom of VIM
 Plugin 'vim-airline/vim-airline-themes'   " Themes for vim-airline
 
-" Dependencies:
-Plugin 'roxma/vim-hug-neovim-rpc'         " Deoplete dependency
-Plugin 'roxma/nvim-yarp'                  " Deoplete dependency
-
 " Themes:
-Plugin 'lokaltog/vim-distinguished'       " Dark theme for 256-color terminals
-Plugin 'chriskempson/base16-vim'          " Base16 themes
-Plugin 'w0ng/vim-hybrid'                  " Hybrid theme
-Plugin 'alessandroyorba/sierra'           " Sierra theme
-Plugin 'cormacrelf/vim-colors-github'     " Github theme
-Plugin 'sjl/badwolf'                      " Badwolf theme
-Plugin 'tomasr/molokai'                   " Molokai theme
+Plugin 'cormacrelf/vim-colors-github'     " Github theme [default]
 Plugin 'morhetz/gruvbox'                  " Gruvbox theme
-Plugin 'atelierbram/base2tone-vim'        " Base2Tone theme
-
-"Plugin 'rainglow/vim'                     " 320+ syntax & UI themes
+Bundle 'sonph/onehalf', {'rtp': 'vim/'}
+" NOTE: Don't leave any comment at the end of the line above...
+"       It causes Vundle to fail to load the Bundle properly!
 
 Plugin 'ryanoasis/vim-devicons'           " Enable icons for NERDTree [XXX: this must be the last!]
 
@@ -92,6 +100,22 @@ Plugin 'ryanoasis/vim-devicons'           " Enable icons for NERDTree [XXX: this
 call vundle#end()                         " Required by Vundle.
 filetype plugin indent on                 " Required by Vundle.
 
+" =============================================================================
+" nVim / Neovide configuration:
+" =============================================================================
+if has('nvim')
+  " Lower value set to increase battery life - increase if desired:
+  let g:neovide_refresh_rate=60
+
+  " Restore window size when opening:
+  let g:neovide_remember_window_size = v:true
+
+  " Shortened intervals to speed up the annoyingly slow animations:
+  let g:neovide_cursor_animation_length=0.02
+  let g:neovide_cursor_trail_length=0.02
+
+  let g:neovide_cursor_antialiasing=v:true
+endif
 
 " =============================================================================
 " Plugins customization:
@@ -114,22 +138,28 @@ let NERDTreeAutoDeleteBuffer = 0          " Change to '1' if you no longer want 
 " 1. Folders | 2. Header files | 3. C/C++ files | 4. Sorting by other extensions | 5. Other files
 let NERDTreeSortOrder = ['\/$', '\.h$', '\.hh$', '\.hpp$', '\.c$', '\.cc$', '\.cpp$', '[[extension]]', '*']
 
-" Starts the NERDTree automatically - when no file(s)/folder was specified:
-" NOTE: This might VIM opening times significantly if used in folder with lots
-"       of files, e.g. accidentally opening VIM in /usr/bin folder...
-"autocmd StdinReadPre * let s:std_in=1
-"autocmd VimEnter * if argc() == 0 | NERDTree | wincmd p | endif
-"autocmd VimEnter * if argc() != 0 && !isdirectory(argv()[0]) | NERDTree | wincmd p | endif
-"autocmd VimEnter * if argc() == 1 &&  isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
+" Starts the NERDTree automatically and move the cursor into its window:
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if &filetype !=# 'gitcommit' && v:this_session == '' | NERDTree | wincmd p | endif
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists('s:std_in') | execute 'NERDTree' argv()[0] | wincmd p | enew | execute 'cd '.argv()[0] | endif
+
+" Close NERDTree automatically if it is the last window in TAB or VIM:
+autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+
+" Mirror the NERDTree in every TAB:
+autocmd BufWinEnter * if getcmdwintype() == '' | silent NERDTreeMirror | endif
 
 " Toggle displaying of NERDTree by pressing Ctrl+N:
-map <silent> <C-N> :NERDTreeToggle<CR><A-Right>
+nnoremap <silent> <C-N> :NERDTreeToggle<CR><A-Right>
 
 " Function for specific filetype highlighting in NERDTree:
 function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
   exec 'autocmd FileType nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
   exec 'autocmd FileType nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
 endfunction
+
+"let NERDTreeIgnore=['\~$']               " List of regular expressions of files to be ignored by NERDTree.
 
 " Setting of highlighting colors for function above:
 " FIXME: Sync the colors with my colorscheme:
@@ -140,10 +170,9 @@ endfunction
 "call NERDTreeHighlightFile('conf',   'yellow',   'none',   'yellow',   '#151515')
 "call NERDTreeHighlightFile('json',   'yellow',   'none',   'yellow',   '#151515')
 
-"let NERDTreeIgnore=['\~$']               " List of regular expressions of files to be ignored by NERDTree.
-
-"let loaded_nerd_tree=1                   " Uncomment this to turn off the NERDTree.
-                                          " Run ':help NERDTree.txt' for more information how to configure NERDTree.
+" Uncomment the line below to turn off the NERDTree. Run ':help NERDTree.txt'
+" for more information how to configure NERDTree...
+"let loaded_nerd_tree=1
 
 " --------------------
 " VIM-devicons config:
@@ -171,11 +200,6 @@ let g:tagbar_autoshowtag=1                " Automatically open VIM folds (comple
 map <silent> <C-M> :TagbarToggle<CR><A-Left>
 
 " NOTE: Tagbar highlighting colors can be changed. See :help tagbar.txt - section HIGHLIGHT COLOURS.
-
-" ---------------
-" Airline config:
-" ---------------
-"let g:airline_powerline_fonts = 1         " Already enabled above.
 
 " ----------------
 " Deoplete config:
@@ -256,6 +280,74 @@ let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standar
 " --------------
 let g:pencil#wrapModeDefault = 'soft'     " Use 'soft' line breaks as default.
 
+" -------------------
+" Ansible VIM config:
+" -------------------
+let g:ansible_unindent_after_newline = 1
+let g:ansible_extra_keywords_highlight = 1
+
+
+" =============================================================================
+" Theme / look settings:
+" =============================================================================
+" Use 24-bit colors (highlight-guifg & highlight-guibg):
+if exists('+termguicolors')
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+  set termguicolors
+endif
+
+" Automatically highlight TABs, trailing and non-breakable
+" whitespaces. Also sets wrapping characters...
+set list listchars=tab:»\ ,trail:·,nbsp:␣,precedes:<,extends:>
+
+" Start with light background for any colorscheme:
+set background=light
+
+" ----------------------------
+" Github colorscheme settings:
+" ----------------------------
+let g:github_colors_soft = 0              " Use more contrasting colors
+
+" -----------------------------
+" Gruvbox colorscheme settings:
+" -----------------------------
+let g:gruvbox_italic = 1                  " Use italic text in both TUI & GUI
+let g:gruvbox_vert_split = 'bg4'          " Bigger contrast for window splits
+let g:gruvbox_guisp_fallback = 'fg'       " How to colorize underlines/strikethroughs in terminal VIM
+let g:gruvbox_contrast_light = 'soft'     " More pleasing contrast with light background
+
+" Try to set custom colorscheme with a fallback mechanism form older VIM versions:
+try
+  let g:airline_theme = 'onehalflight'    " Applies specific theme to Airline as well
+  colorscheme onehalflight
+catch
+  set background=dark
+  colorscheme desert
+endtry
+
+" Key bindings for fast colorscheme changing:
+"   > F5 -- Toggle light/dark background for both the colorscheme and airline
+"   > F6 -- Github colorscheme (supports background switching)
+"   > F7 -- Onehalf Light colorscheme (Shift + F7 for Dark version) [default]
+"   > F8 -- Gruvbox colorscheme (supports background switching)
+"
+"   The Onehalf colorscheme doesn't support background switching, and I don't
+"   have time to hack the solution right now, so Shift + F7 will have to do for now...
+call github_colors#togglebg_map("<F5>")
+
+noremap  <F6>     <Esc>:let g:airline_theme = 'github'<CR><Esc>:colorscheme github<CR>
+inoremap <F6>     <Esc>:let g:airline_theme = 'github'<CR><Esc>:colorscheme github<CR>a
+
+noremap  <F7>     <Esc>:let g:airline_theme = 'onehalflight'<CR><Esc>:colorscheme onehalflight<CR>
+inoremap <F7>     <Esc>:let g:airline_theme = 'onehalflight'<CR><Esc>:colorscheme onehalflight<CR>a
+
+noremap  <S-F7>   <Esc>:let g:airline_theme = 'onehalfdark'<CR><Esc>:colorscheme onehalfdark<CR>
+inoremap <S-F7>   <Esc>:let g:airline_theme = 'onehalfdark'<CR><Esc>:colorscheme onehalfdark<CR>a
+
+noremap  <F8>     <Esc>:let g:airline_theme = 'gruvbox'<CR><Esc>:colorscheme gruvbox<CR>
+inoremap <F8>     <Esc>:let g:airline_theme = 'gruvbox'<CR><Esc>:colorscheme gruvbox<CR>a
+
 
 " =============================================================================
 " General VIM config:
@@ -283,15 +375,18 @@ set tags=.ctags;                          " Look for .tags file in current direc
 
 " Commands / lines history:
 set history=128                           " Number of commands to remember.
-set viminfo=%,<1024,'10,/50,:100,h,f0,n~/.vim/cache/.viminfo
-"           | |     |   |   |    | |  > viminfo file path
-"           | |     |   |   |    | > file marks 0-9,A-Z 0=NOT stored
-"           | |     |   |   |    > disable 'hlsearch' when loading viminfo
-"           | |     |   |   > command-line history saved
-"           | |     |   > search history saved
-"           | |     > files marks saved
-"           | > lines saved each register (old name for <, vi6.2)
-"           > save/restore buffer list
+
+if !has('nvim')                           " Use this only for VIM - causes issues for nVim...
+  set viminfo=%,<1024,'10,/50,:100,h,f0,n~/.vim/cache/.viminfo
+  "           | |     |   |   |    | |  > viminfo file path
+  "           | |     |   |   |    | > file marks 0-9,A-Z 0=NOT stored
+  "           | |     |   |   |    > disable 'hlsearch' when loading viminfo
+  "           | |     |   |   > command-line history saved
+  "           | |     |   > search history saved
+  "           | |     > files marks saved
+  "           | > lines saved each register (old name for <, vi6.2)
+  "           > save/restore buffer list
+endif
 
 " Mouse settings:
 set mouse=a                               " Enable mouse for all VIM modes.
@@ -381,28 +476,6 @@ set diffopt+=indent-heuristic             " Use heuristic to make nicer diffs.
 "set wildchar=<Tab>                        " Key to trigger wildmenu.
 "set wildmode=longest:full,list            " Complete longest string, then list alternatives.
 
-" ----------------------
-" Theme / look settings:
-" ----------------------
-if exists('+termguicolors')               " Fix for old versions of VIM not supporting full colors.
-  set termguicolors                       " Use 24-bit colors (highlight-guifg & highlight-guibg).
-endif
-
-" Automatically highlight TABs, trailing and non-breakable
-" whitespaces. Also sets wrapping characters...
-set list listchars=tab:»\ ,trail:·,nbsp:␣,precedes:<,extends:>
-
-" Use custom colorscheme:
-try
-  colorscheme github
-catch
-  " Fallback mechanism for inital bootstrapping:
-  if &background ==# 'dark'
-    colorscheme ron
-  else
-    colorscheme peachpuff
-  endif
-endtry
 
 " =============================================================================
 " Additional tweaks, fixes & optimizations:
@@ -611,9 +684,8 @@ inoremap <silent> <A-Down> <Esc>:wincmd<Space>j<CR>
 " Manual opening / closing of tab pages:
 "   >        F4 -- will open a new file tab of given path
 "   > Ctrl + F4 -- will close the current tab page
-noremap  <F4> <Esc>:tab drop<Space>
-inoremap <F4> <Esc>:tab drop<Space>
-
+noremap             <F4> <Esc>:tab drop<Space>
+inoremap            <F4> <Esc>:tab drop<Space>
 noremap  <silent> <C-F4> <Esc>:tabc<CR>
 inoremap <silent> <C-F4> <Esc>:tabc<CR>
 
@@ -634,8 +706,7 @@ inoremap <silent> <C-S-Up> <Esc>:tabfirst<CR>
 noremap  <silent> <C-S-Down> <Esc>:tablast<CR>
 inoremap <silent> <C-S-Down> <Esc>:tablast<CR>
 
-" Moves the current tab to the left/right by one position:
-" Rearranging tab pages position:
+" Moves the current tab to the left/right by one position (rearranging):
 "   > F10 -- move tab to the left
 "   > F11 -- move tab to the right
 noremap  <silent> <F10> :execute 'silent! tabmove ' . (tabpagenr() - 2)<CR>
@@ -710,6 +781,7 @@ inoremap {{<CR>               {<CR>}<Esc>O
 inoremap {{<Esc>              {{
 inoremap {{<Right>            {{
 inoremap {{<C-Space>          {}<Left>
+inoremap {{}                  {{}}<Left><Left>
 inoremap {{{                  {{{
 
 inoremap [<CR>                [<CR>]<Esc>O<Tab>
