@@ -319,7 +319,7 @@ let g:gruvbox_contrast_light = 'soft'     " More pleasing contrast with light ba
 
 " Try to set custom colorscheme with a fallback mechanism form older VIM versions:
 try
-  let g:airline_theme = 'onehalflight'    " Applies specific theme to Airline as well
+  let g:airline_theme = 'onehalfdark'    " Inverts the color of Airline for better visibility in window splits
   colorscheme onehalflight
 catch
   set background=dark
@@ -339,11 +339,11 @@ call github_colors#togglebg_map("<F5>")
 noremap  <F6>     <Esc>:let g:airline_theme = 'github'<CR><Esc>:colorscheme github<CR>
 inoremap <F6>     <Esc>:let g:airline_theme = 'github'<CR><Esc>:colorscheme github<CR>a
 
-noremap  <F7>     <Esc>:let g:airline_theme = 'onehalflight'<CR><Esc>:colorscheme onehalflight<CR>
-inoremap <F7>     <Esc>:let g:airline_theme = 'onehalflight'<CR><Esc>:colorscheme onehalflight<CR>a
+noremap  <F7>     <Esc>:let g:airline_theme = 'onehalfdark'<CR><Esc>:colorscheme onehalflight<CR>
+inoremap <F7>     <Esc>:let g:airline_theme = 'onehalfdark'<CR><Esc>:colorscheme onehalflight<CR>a
 
-noremap  <S-F7>   <Esc>:let g:airline_theme = 'onehalfdark'<CR><Esc>:colorscheme onehalfdark<CR>
-inoremap <S-F7>   <Esc>:let g:airline_theme = 'onehalfdark'<CR><Esc>:colorscheme onehalfdark<CR>a
+noremap  <S-F7>   <Esc>:let g:airline_theme = 'onehalflight'<CR><Esc>:colorscheme onehalfdark<CR>
+inoremap <S-F7>   <Esc>:let g:airline_theme = 'onehalflight'<CR><Esc>:colorscheme onehalfdark<CR>a
 
 noremap  <F8>     <Esc>:let g:airline_theme = 'gruvbox'<CR><Esc>:colorscheme gruvbox<CR>
 inoremap <F8>     <Esc>:let g:airline_theme = 'gruvbox'<CR><Esc>:colorscheme gruvbox<CR>a
