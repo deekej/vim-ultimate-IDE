@@ -178,7 +178,7 @@ endfunction
 " VIM-devicons config:
 " --------------------
 set encoding=UTF-8
-set guifont=Hack\ Nerd\ Font\ 11
+set guifont=Hack\ Nerd\ Font\ 12
 let g:airline_powerline_fonts = 1         " Allows using 'vim-devicons' alongside with 'vim-airline'.
 
 " Previously used font:
