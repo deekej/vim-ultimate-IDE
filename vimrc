@@ -577,6 +577,7 @@ set indentkeys-=0#
 
 " --------------------------
 
+" Start in insert mode when writing git commit message:
 autocmd! VimEnter COMMIT_EDITMSG exec 'norm gg' | startinsert!
 
 " --------------------------
