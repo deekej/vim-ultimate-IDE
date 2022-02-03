@@ -10,9 +10,9 @@ set runtimepath+=~/.vim/bundle/Vundle.vim
 " START Vundle loading:
 call vundle#begin()
 
-" -------------------
-" Plugins enablement:
-" -------------------
+" -----------------------------
+" Plugins / Bundles enablement:
+" -----------------------------
 " NOTE: By default Vundle looks up the plugins @ Github by username/repository.
 
 Plugin 'VundleVim/Vundle.vim'             " Let Vundle manage itself [required].
@@ -140,24 +140,24 @@ let NERDTreeSortOrder = ['\/$', '\.h$', '\.hh$', '\.hpp$', '\.c$', '\.cc$', '\.c
 
 " Starts the NERDTree automatically and move the cursor into its window:
 autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if &filetype !=# 'gitcommit' && v:this_session == '' | NERDTree | wincmd p | endif
+autocmd VimEnter * if &filetype !=# 'gitcommit' && v:this_session == '' | NERDTreeFind | wincmd p | endif
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists('s:std_in') | execute 'NERDTree' argv()[0] | wincmd p | enew | execute 'cd '.argv()[0] | endif
-
-" Close NERDTree automatically if it is the last window in TAB or VIM:
-autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
-autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 
 " Mirror the NERDTree in every TAB:
 autocmd BufWinEnter * if getcmdwintype() == '' | silent NERDTreeMirror | endif
-
-" Toggle displaying of NERDTree by pressing Ctrl+N:
-nnoremap <silent> <C-N> :NERDTreeToggle<CR><A-Right>
 
 " Function for specific filetype highlighting in NERDTree:
 function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
   exec 'autocmd FileType nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
   exec 'autocmd FileType nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
 endfunction
+
+" Close NERDTree automatically if it is the last window in TAB or VIM:
+autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+
+" Toggle displaying of NERDTree by pressing Ctrl+N:
+nnoremap <silent> <C-N> :NERDTreeToggle<CR><A-Right>
 
 "let NERDTreeIgnore=['\~$']               " List of regular expressions of files to be ignored by NERDTree.
 
@@ -446,9 +446,10 @@ set foldlevelstart=0                      " Do not fold the first level of foldi
 set foldnestmax=1                         " Do not fold more than 1 level (i.e. functions folding only).
 
 " VIM window settings:
-set showtabline=2                         " Always show tab pages.
-set guioptions+=rR                        " Enable always-on scrollbar the right side
-set guioptions+=lL                        " Enable always-on scrollbar the left side instead
+set showtabline=2                         " Always show TAB pages
+set guitablabel=%t                        " Display only file names in the gVim TABs
+set guioptions+=rR                        " Enable always-on scrollbar on the right side
+set guioptions+=lL                        " Enable always-on scrollbar on the left side as well
 
 " DIFF settings:
 set diffopt+=internal                     " Make sure to use internal libxdiff library (same as GIT).
@@ -782,7 +783,7 @@ inoremap {{<CR>               {<CR>}<Esc>O
 inoremap {{<Esc>              {{
 inoremap {{<Right>            {{
 inoremap {{<C-Space>          {}<Left>
-inoremap {{}                  {{}}<Left><Left>
+inoremap {{}                  {{<Space><Space>}}<Left><Left><Left>
 inoremap {{{                  {{{
 
 inoremap [<CR>                [<CR>]<Esc>O<Tab>
