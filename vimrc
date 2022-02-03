@@ -447,7 +447,9 @@ set foldnestmax=1                         " Do not fold more than 1 level (i.e. 
 
 " VIM window settings:
 set showtabline=2                         " Always show TAB pages
-set guitablabel=%t                        " Display only file names in the gVim TABs
+set tabline=[%N]\ %r%h%w\ \ \%.40F\ %m        " Temporary tabline for both VIM and GVIM, which will be replaced
+set guitablabel=[%N]\ %r%h%w\ \ \%.40F\ %m    " in the future with a more intelligent function... [TODO]
+set guioptions+=e                         " Make sure the TABline is displayed in gVim
 set guioptions+=rR                        " Enable always-on scrollbar on the right side
 set guioptions+=lL                        " Enable always-on scrollbar on the left side as well
 
