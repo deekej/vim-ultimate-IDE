@@ -1,6 +1,6 @@
 " Maximimize the gVim window for 21:9 / 1440p monitor size:
-autocmd Syntax * if &filetype !=# 'gitcommit' | set lines=52 columns=300 | endif
-autocmd Syntax * if &filetype ==# 'gitcommit' | set lines=52 columns=120 | endif
+autocmd Syntax * if &filetype !=# 'gitcommit' && &filetype !=# 'gitrebase' | set lines=52 columns=300 | endif
+autocmd Syntax * if &filetype ==# 'gitcommit' || &filetype ==# 'gitrebase' | set lines=52 columns=120 | endif
 
 " NOTE: Using the 'Syntax' keyword here, because processing of the commands
 "       above is much faster then using typical 'BufEnter' or 'VimEnter'.
