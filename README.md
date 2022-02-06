@@ -33,7 +33,8 @@ git clone --recurse-submodules https://github.com/deekej/vim-ultimate-IDE.git .v
 
 Last you will need to finish the bootstrap process:
 ```bash
-ln -sf ~/.vim/vimrc ~/.vimrc
+ln -sf ~/.vim/vimrc  ~/.vimrc
+ln -sf ~/.vim/gvimrc ~/.gvimrc
 ln -sf ~/.vim/fonts/hack-nerd    ~/.local/share/fonts/hack-nerd
 ln -sf ~/.vim/fonts/dejavu-nerd  ~/.local/share/fonts/dejavu-nerd
 fc-cache -f -v
