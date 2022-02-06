@@ -36,7 +36,7 @@ Last you will need to finish the bootstrap process:
 ln -sf ~/.vim/vimrc ~/.vimrc
 ln -sf ~/.vim/fonts/hack-nerd    ~/.local/share/fonts/hack-nerd
 ln -sf ~/.vim/fonts/dejavu-nerd  ~/.local/share/fonts/dejavu-nerd
-fc-cache -v
+fc-cache -f -v
 vim +PluginInstall +qall
 ```
 
