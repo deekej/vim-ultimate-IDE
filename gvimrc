@@ -9,16 +9,16 @@ set guifont=MesloLGS\ NF\ 12
 "set guifont=DejaVuSansMono\ Nerd\ Font\ 12
 
 " Maximimize the gVim window for 1920x1080 / 24" monitor:
-autocmd Syntax * if &filetype !=# 'gitcommit' && &filetype !=# 'gitrebase' | set lines=41 columns=171 | endif
-autocmd Syntax * if &filetype ==# 'gitcommit' || &filetype ==# 'gitrebase' | set lines=41 columns=100 | endif
+autocmd Syntax * if &filetype !=# 'gitcommit' && &filetype !=# 'gitrebase' | set lines=53 columns=300 | endif
+autocmd Syntax * if &filetype ==# 'gitcommit' || &filetype ==# 'gitrebase' | set lines=53 columns=120 | endif
 
 " NOTE: Using the 'Syntax' keyword here, because processing of the commands
 "       above is much faster then using typical 'BufEnter' or 'VimEnter'.
 "  See: https://vi.stackexchange.com/questions/4493/what-is-the-order-of-winenter-bufenter-bufread-syntax-filetype-events
 
 " Set wider sub-window sizes for NERDTree & Tagbar:
-let g:NERDTreeWinSize = 40                " Sets the width of NERDTree column.
-let g:tagbar_width = 40                   " Sets the width of Tagbar column.
+let g:NERDTreeWinSize = 80                " Sets the width of NERDTree column.
+let g:tagbar_width = 45                   " Sets the width of Tagbar column.
 
 noremap  <silent> <S-F9> :execute 'silent !~/.vim/.togglelayout'<CR> :source ~/.gvimrc<CR>
 inoremap <silent> <S-F9> <Esc>:execute 'silent !~/.vim/.togglelayout'<CR> :source ~/.gvimrc<CR>
