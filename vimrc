@@ -100,22 +100,6 @@ Plugin 'ryanoasis/vim-devicons'           " Enable icons for NERDTree [XXX: this
 call vundle#end()                         " Required by Vundle.
 filetype plugin indent on                 " Required by Vundle.
 
-" =============================================================================
-" nVim / Neovide configuration:
-" =============================================================================
-if has('nvim')
-  " Lower value set to increase battery life - increase if desired:
-  let g:neovide_refresh_rate=60
-
-  " Restore window size when opening:
-  let g:neovide_remember_window_size = v:true
-
-  " Shortened intervals to speed up the annoyingly slow animations:
-  let g:neovide_cursor_animation_length=0.02
-  let g:neovide_cursor_trail_length=0.02
-
-  let g:neovide_cursor_antialiasing=v:true
-endif
 
 " =============================================================================
 " Plugins customization:
@@ -124,13 +108,13 @@ endif
 " ----------------
 " NERDTree config:
 " ----------------
+let NERDTreeWinSize = 40                  " Sets the width of NERDTree column.
 let NERDTreeShowBookmarks = 1             " Displays bookmarks by default.
 let NERDTreeChDirMode = 2                 " Always change CWD of VIM whenever the node is changed.
 let NERDTreeShowHidden = 1                " Show hidden files on filesystem.
 let NERDTreeNaturalSort = 1               " Use natural sorting for files/folder containing numbers.
 let NERDTreeRespectWildIgnore = 1         " Forces NERDTree to take 'wildignore' into account when ignoring files.
 let NERDTreeCaseSensitiveSort = 1         " Sort first the files/folders starting with capital letter.
-let NERDTreeWinSize = 40                  " Sets the width of NERDTree column.
 let NERDTreeMinimalMenu = 0               " Change to '1' when you are familiar with the menu for nodes.
 let NERDTreeAutoDeleteBuffer = 0          " Change to '1' if you no longer want to confirm prompt when deleting old buffer.
 
@@ -173,16 +157,6 @@ nnoremap <silent> <C-N> :NERDTreeToggle<CR><A-Right>
 " Uncomment the line below to turn off the NERDTree. Run ':help NERDTree.txt'
 " for more information how to configure NERDTree...
 "let loaded_nerd_tree=1
-
-" --------------------
-" VIM-devicons config:
-" --------------------
-set encoding=UTF-8
-set guifont=Hack\ Nerd\ Font\ 12
-let g:airline_powerline_fonts = 1         " Allows using 'vim-devicons' alongside with 'vim-airline'.
-
-" Previously used font:
-"set guifont=DejaVuSansMono\ Nerd\ Font\ 11
 
 " --------------
 " Tagbar config:
@@ -297,6 +271,9 @@ if exists('+termguicolors')
   set termguicolors
 endif
 
+" Make sure we are to properly display all the characters:
+set encoding=UTF-8
+
 " Automatically highlight TABs, trailing and non-breakable
 " whitespaces. Also sets wrapping characters...
 set list listchars=tab:»\ ,trail:·,nbsp:␣,precedes:<,extends:>
@@ -304,14 +281,13 @@ set list listchars=tab:»\ ,trail:·,nbsp:␣,precedes:<,extends:>
 " Start with light background for any colorscheme:
 set background=light
 
-" ----------------------------
+" Enable usage of 'vim-devicons' alongside 'vim-airline':
+let g:airline_powerline_fonts = 1
+
 " Github colorscheme settings:
-" ----------------------------
 let g:github_colors_soft = 0              " Use more contrasting colors
 
-" -----------------------------
 " Gruvbox colorscheme settings:
-" -----------------------------
 let g:gruvbox_italic = 1                  " Use italic text in both TUI & GUI
 let g:gruvbox_vert_split = 'bg4'          " Bigger contrast for window splits
 let g:gruvbox_guisp_fallback = 'fg'       " How to colorize underlines/strikethroughs in terminal VIM
