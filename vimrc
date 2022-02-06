@@ -18,44 +18,30 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'             " Let Vundle manage itself [required].
 
 " Utilities:
-Plugin 'scrooloose/nerdtree'              " NERDTree file browser
 Plugin 'majutsushi/tagbar'                " Tagbar tags browser
 Plugin 'ctrlpvim/ctrlp.vim'               " Full path fuzzy file/buffer/mru/tag/... finder
 Plugin 'tpope/vim-sensible'               " Universal set of default configurations
 Plugin 'ervandew/supertab'                " Insert completion via TAB
 Plugin 'wesq3/vim-windowswap'             " Allows swaping windows without ruining layout
-Plugin 'sirver/ultisnips'                 " Allows using snippets in VIM
 Plugin 'godlygeek/tabular'                " Allows rapid line-up of the text
 Plugin 'gilsondev/searchtasks.vim'        " Search tool for TODO, FIXME & XXX
 
-" NOTE: shougo/deoplete.nvim to be replaced by shougo/ddc.vim in the future
-if has('nvim')
-  Plugin 'shougo/deoplete.nvim'           " Asynchronous completion framework
-else
-  Plugin 'shougo/deoplete.nvim'           " Asynchronous completion framework
-  Plugin 'roxma/vim-hug-neovim-rpc'       " Deoplete dependency for VIM only
-  Plugin 'roxma/nvim-yarp'                " Deoplete dependency for VIM only
-endif
+Plugin 'shougo/deoplete.nvim'           " Asynchronous completion framework
+Plugin 'roxma/vim-hug-neovim-rpc'       " Deoplete dependency for VIM only
+Plugin 'roxma/nvim-yarp'                " Deoplete dependency for VIM only
 
 "Plugin 'junegunn/fzf'                     " A command-line fuzzy finder
 "Plugin 'junegunn/fzf.vim'                 " A set of basic VIM commands for FZF
 "Plugin 'tpope/vim-dispatch'               " Start asynchronous tasks from VIM
 "Plugin 'vim-scripts/bufonly.vim'          " Allow buffer deletion except current one / specified
-"Plugin 'lambdalisue/fern.vim'             " Replacement for NERDTree once it's no longer supported
-
-"if has('nvim')
-"  Plugin 'antoinemadec/FixCursorHold.nvim' " Fix for nVim only - see https://github.com/lambdalisue/fern.vim/issues/120
-"endif
 
 " Git Support:
-Plugin 'xuyuanp/nerdtree-git-plugin'      " Extension for NERDTree file browser
 Plugin 'tpope/vim-fugitive'               " Git wrapper for VIM
 Plugin 'gregsexton/gitv'                  " Repository viewer built upon 'vim-fugitive'
 "Plugin 'jaxbot/github-issues.vim'         " Automatically populates omni-complete with Github issues
 
 " Generic Programming Support:
 Plugin 'vim-syntastic/syntastic'          " Plugin for external syntax checkers.
-Plugin 'honza/vim-snippets'               " Snippets for UltiSnips
 Plugin 'tobys/vmustache'                  " Allows usage of mustache templates in VIM
 Plugin 'neomake/neomake'                  " Asynchronous linting and make framework
 Plugin 'vim-scripts/doxygentoolkit.vim'   " Simplifies generating of Doxygen documentation
@@ -104,59 +90,6 @@ filetype plugin indent on                 " Required by Vundle.
 " =============================================================================
 " Plugins customization:
 " =============================================================================
-
-" ----------------
-" NERDTree config:
-" ----------------
-let NERDTreeWinSize = 40                  " Sets the width of NERDTree column.
-let NERDTreeShowBookmarks = 1             " Displays bookmarks by default.
-let NERDTreeChDirMode = 2                 " Always change CWD of VIM whenever the node is changed.
-let NERDTreeShowHidden = 1                " Show hidden files on filesystem.
-let NERDTreeNaturalSort = 1               " Use natural sorting for files/folder containing numbers.
-let NERDTreeRespectWildIgnore = 1         " Forces NERDTree to take 'wildignore' into account when ignoring files.
-let NERDTreeCaseSensitiveSort = 1         " Sort first the files/folders starting with capital letter.
-let NERDTreeMinimalMenu = 0               " Change to '1' when you are familiar with the menu for nodes.
-let NERDTreeAutoDeleteBuffer = 0          " Change to '1' if you no longer want to confirm prompt when deleting old buffer.
-
-" Allow custom sorting of files, based on the list of regular expressions:
-" 1. Folders | 2. Header files | 3. C/C++ files | 4. Sorting by other extensions | 5. Other files
-let NERDTreeSortOrder = ['\/$', '\.h$', '\.hh$', '\.hpp$', '\.c$', '\.cc$', '\.cpp$', '[[extension]]', '*']
-
-" Starts the NERDTree automatically and move the cursor into its window:
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if &filetype !=# 'gitcommit' && &filetype !=# 'gitrebase' && v:this_session == '' | NERDTreeFind | wincmd p | endif
-autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists('s:std_in') | execute 'NERDTree' argv()[0] | wincmd p | enew | execute 'cd '.argv()[0] | endif
-
-" Mirror the NERDTree in every TAB:
-autocmd BufWinEnter * if getcmdwintype() == '' | silent NERDTreeMirror | endif
-
-" Function for specific filetype highlighting in NERDTree:
-function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
-  exec 'autocmd FileType nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
-  exec 'autocmd FileType nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
-endfunction
-
-" Close NERDTree automatically if it is the last window in TAB or VIM:
-autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
-autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
-
-" Toggle displaying of NERDTree by pressing Ctrl+N:
-nnoremap <silent> <C-N> :NERDTreeToggle<CR><A-Right>
-
-"let NERDTreeIgnore=['\~$']               " List of regular expressions of files to be ignored by NERDTree.
-
-" Setting of highlighting colors for function above:
-" FIXME: Sync the colors with my colorscheme:
-"call NERDTreeHighlightFile('ini',    'yellow',   'none',   'yellow',   '#151515')
-"call NERDTreeHighlightFile('md',     'blue',     'none',   '#3366FF',  '#151515')
-"call NERDTreeHighlightFile('yml',    'yellow',   'none',   'yellow',   '#151515')
-"call NERDTreeHighlightFile('config', 'yellow',   'none',   'yellow',   '#151515')
-"call NERDTreeHighlightFile('conf',   'yellow',   'none',   'yellow',   '#151515')
-"call NERDTreeHighlightFile('json',   'yellow',   'none',   'yellow',   '#151515')
-
-" Uncomment the line below to turn off the NERDTree. Run ':help NERDTree.txt'
-" for more information how to configure NERDTree...
-"let loaded_nerd_tree=1
 
 " --------------
 " Tagbar config:
@@ -234,14 +167,6 @@ endfunction
 let g:AutoClosePreserveDotReg = 0         " Fix for autoclose inserting "pumvisible()" everywhere:
 
 " -----------------
-" UltiSnips config:
-" -----------------
-let g:UltiSnipsExpandTrigger='<C-Insert>'
-let g:UltiSnipsJumpForwardTrigger='<C-F>'
-let g:UltiSnipsJumpBackwardTrigger='<C-B>'
-let g:UltiSnipsEditSplit='vertical'       " If you want :UltiSnipsEdit to split your window.
-
-" -----------------
 " ctrlp.vim config:
 " -----------------
 let g:ctrlp_map = '<F2>'                  " Default mapping to invoke CtrlP.
@@ -295,11 +220,11 @@ let g:gruvbox_contrast_light = 'soft'     " More pleasing contrast with light ba
 
 " Try to set custom colorscheme with a fallback mechanism form older VIM versions:
 try
-  let g:airline_theme = 'onehalfdark'    " Inverts the color of Airline for better visibility in window splits
-  colorscheme onehalflight
+  let g:airline_theme = 'github'
+  colorscheme github
 catch
   set background=dark
-  colorscheme desert
+  colorscheme zellner
 endtry
 
 " Key bindings for fast colorscheme changing:
@@ -352,17 +277,15 @@ set tags=.ctags;                          " Look for .tags file in current direc
 " Commands / lines history:
 set history=128                           " Number of commands to remember.
 
-if !has('nvim')                           " Use this only for VIM - causes issues for nVim...
-  set viminfo=%,<1024,'10,/50,:100,h,f0,n~/.vim/cache/.viminfo
-  "           | |     |   |   |    | |  > viminfo file path
-  "           | |     |   |   |    | > file marks 0-9,A-Z 0=NOT stored
-  "           | |     |   |   |    > disable 'hlsearch' when loading viminfo
-  "           | |     |   |   > command-line history saved
-  "           | |     |   > search history saved
-  "           | |     > files marks saved
-  "           | > lines saved each register (old name for <, vi6.2)
-  "           > save/restore buffer list
-endif
+set viminfo=%,<1024,'10,/50,:100,h,f0,n~/.vim/cache/.viminfo
+"           | |     |   |   |    | |  > viminfo file path
+"           | |     |   |   |    | > file marks 0-9,A-Z 0=NOT stored
+"           | |     |   |   |    > disable 'hlsearch' when loading viminfo
+"           | |     |   |   > command-line history saved
+"           | |     |   > search history saved
+"           | |     > files marks saved
+"           | > lines saved each register (old name for <, vi6.2)
+"           > save/restore buffer list
 
 " Mouse settings:
 set mouse=a                               " Enable mouse for all VIM modes.
