@@ -761,8 +761,11 @@ inoremap {{<CR>               {<CR>}<Esc>O
 inoremap {{<Esc>              {{
 inoremap {{<Right>            {{
 inoremap {{<C-Space>          {}<Left>
-inoremap {{}                  {{<Space><Space>}}<Left><Left><Left>
-inoremap {{{                  {{{
+inoremap {{{                  {{<Space><Space>}}<Left><Left><Left>
+inoremap {{{<CR>              {{{<CR>
+inoremap {{{<Space>           {{{<Space>
+inoremap {{{{                 {{{{
+inoremap "{{{                 "{{<Space><Space>}}"<Left><Left><Left><Left>
 
 inoremap [<CR>                [<CR>]<Esc>O<Tab>
 inoremap [<Esc>               [
