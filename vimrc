@@ -776,7 +776,10 @@ inoremap [[<CR>               [<CR>]<Esc>O<Tab>
 inoremap [[<Esc>              [[
 inoremap [[<Right>            [[
 inoremap [[<C-Space>          []<Left>
-inoremap [[[                  [[[
+inoremap [[[                  [[<Space><Space>]]<Left><Left><Left>
+inoremap [[[<CR>              [[[<CR>
+inoremap [[[<Space>           [[[<Space>
+inoremap [[[[                 [[[[
 
 inoremap <<CR>                <<CR>><Esc>O<Tab>
 inoremap <<Esc>               <
