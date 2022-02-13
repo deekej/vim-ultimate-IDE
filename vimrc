@@ -122,7 +122,6 @@ let NERDTreeAutoDeleteBuffer = 0          " Change to '1' if you no longer want 
 " 1. Folders | 2. Header files | 3. C/C++ files | 4. Sorting by other extensions | 5. Other files
 let NERDTreeSortOrder = ['\/$', '\.h$', '\.hh$', '\.hpp$', '\.c$', '\.cc$', '\.cpp$', '[[extension]]', '*']
 
-
 " Starts the NERDTree automatically and moves the cursor into its window (when not in DIFF mode):
 if !&diff
   autocmd StdinReadPre * let s:std_in=1
@@ -423,6 +422,7 @@ set sidescrolloff=4                       " Minimum number of columns to scroll 
 set foldmethod=indent                     " Folding based on file indentation.
 set foldlevelstart=0                      " Do not fold the first level of folding.
 set foldnestmax=1                         " Do not fold more than 1 level (i.e. functions folding only).
+set nofoldenable                          " Always show the whole document at the start of VIM
 
 " VIM window settings:
 set showtabline=2                             " Always show TAB pages
