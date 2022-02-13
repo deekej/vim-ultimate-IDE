@@ -2,6 +2,7 @@
 backups/*
 bundle/*
 cache/*
+spell/*
 swap/*
 
 # Ignore these files:
