@@ -122,10 +122,13 @@ let NERDTreeAutoDeleteBuffer = 0          " Change to '1' if you no longer want 
 " 1. Folders | 2. Header files | 3. C/C++ files | 4. Sorting by other extensions | 5. Other files
 let NERDTreeSortOrder = ['\/$', '\.h$', '\.hh$', '\.hpp$', '\.c$', '\.cc$', '\.cpp$', '[[extension]]', '*']
 
-" Starts the NERDTree automatically and move the cursor into its window:
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if &filetype !=# 'gitcommit' && &filetype !=# 'gitrebase' && v:this_session == '' | NERDTreeFind | wincmd p | endif
-autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists('s:std_in') | execute 'NERDTree' argv()[0] | wincmd p | enew | execute 'cd '.argv()[0] | endif
+
+" Starts the NERDTree automatically and moves the cursor into its window (when not in DIFF mode):
+if !&diff
+  autocmd StdinReadPre * let s:std_in=1
+  autocmd VimEnter * if &filetype !=# 'gitcommit' && &filetype !=# 'gitrebase' && v:this_session == '' | NERDTreeFind | wincmd p | endif
+  autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists('s:std_in') | execute 'NERDTree' argv()[0] | wincmd p | enew | execute 'cd '.argv()[0] | endif
+endif
 
 " Mirror the NERDTree in every TAB:
 autocmd BufWinEnter * if getcmdwintype() == '' | silent NERDTreeMirror | endif
@@ -539,12 +542,11 @@ inoremap <silent> <C-End> :let ncl=!ncl<Bar>:if ncl<Bar>:hi CursorLine cterm=NON
 
 " --------------------------
 
-" Fix for highlighting in DIFF mode:
-" FIXME: Move this into separate colorscheme file.
-highlight DiffAdd cterm=none ctermfg=black ctermbg=Green gui=none guifg=black guibg=green
-highlight DiffDelete cterm=none ctermfg=black ctermbg=Red gui=none guifg=black guibg=red
-highlight DiffChange cterm=none ctermfg=black ctermbg=Yellow gui=none guifg=black guibg=yellow
-highlight DiffText cterm=none ctermfg=black ctermbg=Magenta gui=none guifg=black guibg=magenta
+" Custom highlighting colors in DIFF mode:
+highlight DiffAdd     cterm=bold ctermfg=71   gui=bold guifg=#50a14f
+highlight DiffDelete  cterm=bold ctermfg=167  gui=bold guifg=#e45649
+highlight DiffChange  cterm=bold ctermfg=136  gui=bold guifg=#c18401
+highlight DiffText    cterm=bold ctermfg=127  gui=bold guifg=#a626a4
 
 " --------------------------
 
