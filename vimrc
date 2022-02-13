@@ -422,12 +422,16 @@ set foldlevelstart=0                      " Do not fold the first level of foldi
 set foldnestmax=1                         " Do not fold more than 1 level (i.e. functions folding only).
 
 " VIM window settings:
-set showtabline=2                         " Always show TAB pages
+set showtabline=2                             " Always show TAB pages
 set tabline=[%N]\ %r%h%w\ \ \%.40F\ %m        " Temporary tabline for both VIM and GVIM, which will be replaced
 set guitablabel=[%N]\ %r%h%w\ \ \%.40F\ %m    " in the future with a more intelligent function... [TODO]
+
+set guioptions-=m                         " Remove the top menu items to regain some vertical space
 set guioptions+=e                         " Make sure the TABline is displayed in gVim
 set guioptions+=rR                        " Enable always-on scrollbar on the right side
 set guioptions+=lL                        " Enable always-on scrollbar on the left side as well
+set guioptions+=b                         " Add horizontal scrollbar to the bottom (useful for wide documents)
+set guioptions+=h                         " Limit the horizonatal scrollbar size to the length of the cursor line (reduces computations).
 
 " DIFF settings:
 set diffopt+=internal                     " Make sure to use internal libxdiff library (same as GIT).
