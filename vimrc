@@ -851,6 +851,10 @@ autocmd FileType,BufRead *.tex                      setlocal   spell textwidth=1
 
 autocmd FileType,BufRead *.spec                     setlocal nospell textwidth=120
 
+" Do not make swap or backup files, nor store info in viminfo file for Ansible Vault.
+" This requires filetype=ansible.vault to be specified at the beginning of each encrypted file.
+autocmd FileType,BufRead ansible.vault              setlocal nospell               noswapfile nobackup nowritebackup viminfo= clipboard=
+
 
 " =============================================================================
 " Tips & tricks (a.k.a. stuff I tend to forget):
