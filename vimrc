@@ -246,7 +246,7 @@ let g:UltiSnipsEditSplit='vertical'       " If you want :UltiSnipsEdit to split 
 " -----------------
 " ctrlp.vim config:
 " -----------------
-let g:ctrlp_map = '<F2>'                  " Default mapping to invoke CtrlP.
+let g:ctrlp_map = '<F3>'                  " Default mapping to invoke CtrlP.
 
 " Ignore files specified in .gitignore file:
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
@@ -620,9 +620,9 @@ inoremap <S-Down> <Esc><C-d>a
 
 " --------------------------
 
-" Display contents of VIM registers by pressing F3:
-noremap  <silent> <F3> <Esc>:registers<CR>
-inoremap <silent> <F3> <Esc>:registers<CR>
+" Display contents of VIM registers by pressing F12:
+noremap  <silent> <F12> <Esc>:registers<CR>
+inoremap <silent> <F12> <Esc>:registers<CR>
 
 " --------------------------
 
@@ -668,8 +668,11 @@ inoremap <silent> <A-Down> <Esc>:wincmd<Space>j<CR>
 " --------------------------
 
 " Manual opening / closing of tab pages:
+"   >        F2 -- will open a new [NO NAME] tab
 "   >        F4 -- will open a new file tab of given path
 "   > Ctrl + F4 -- will close the current tab page
+noremap             <F2> <Esc>:tabnew<CR>
+inoremap            <F2> <Esc>:tabnew<CR>
 noremap             <F4> <Esc>:tab drop<Space>
 inoremap            <F4> <Esc>:tab drop<Space>
 noremap  <silent> <C-F4> <Esc>:tabc<CR>
@@ -702,10 +705,10 @@ noremap  <silent> <F11> :execute 'silent! tabmove ' . (tabpagenr() + 1)<CR>
 inoremap <silent> <F11> <Esc>:execute 'silent! tabmove ' . (tabpagenr() + 1)<CR>
 
 " Switch copying of contents between VIM windows only and all system windows:
-"   > F12 -- toggle copying behaviour
+"   > F9 -- toggle copying behaviour
 "   > default: copy between VIM windows only
-noremap  <silent> <F12> :call ToggleClipboardMode() <CR>
-inoremap <silent> <F12> <Esc>:call ToggleClipboardMode() <CR>
+noremap  <silent> <F9> :call ToggleClipboardMode() <CR>
+inoremap <silent> <F9> <Esc>:call ToggleClipboardMode() <CR>
 
 function! ToggleClipboardMode()
   if (&l:clipboard == "unnamed")
