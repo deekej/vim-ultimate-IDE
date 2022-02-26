@@ -19,6 +19,9 @@ autocmd Syntax * if &filetype ==# 'gitcommit' || &filetype ==# 'gitrebase' | set
 let g:NERDTreeWinSize = 40                " Sets the width of NERDTree column.
 let g:tagbar_width = 40                   " Sets the width of Tagbar column.
 
+noremap  <silent> <S-F9> :execute 'silent !~/.vim/.togglelayout'<CR> :source ~/.gvimrc<CR>
+inoremap <silent> <S-F9> <Esc>:execute 'silent !~/.vim/.togglelayout'<CR> :source ~/.gvimrc<CR>
+
 " =============================================================================
 " Neovide configuration:
 " =============================================================================

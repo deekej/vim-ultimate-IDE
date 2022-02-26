@@ -1,0 +1,14 @@
+#!/bin/bash
+
+cd ~/.vim/
+
+git stash -q      # Make sure we don't lost any changes.
+
+non_default_branch="1440p.35"
+current_branch="$(git branch --show-current)"
+
+if [[ "${current_branch}" != 'main' ]]; then
+  git checkout -q 'main'
+else
+  git checkout -q "${non_default_branch}"
+fi
