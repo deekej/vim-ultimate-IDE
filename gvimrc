@@ -2,9 +2,10 @@
 " General GUI configuration:
 " =============================================================================
 " Font used for GUI only (Vim/nVim inherits font settings from the terminal):
-set guifont=Hack\ Nerd\ Font\ 12
+set guifont=MesloLGS\ NF\ 12
 
 " Supported Nerd Font alternative:
+"set guifont=Hack\ Nerd\ Font\ 12
 "set guifont=DejaVuSansMono\ Nerd\ Font\ 12
 
 " Maximimize the gVim window for 1920x1080 / 24" monitor:
