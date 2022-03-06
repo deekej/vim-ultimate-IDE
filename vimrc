@@ -314,17 +314,17 @@ endtry
 "   have time to hack the solution right now, so Shift + F7 will have to do for now...
 call github_colors#togglebg_map("<F5>")
 
-noremap  <F6>     <Esc>:let g:airline_theme = 'github'<CR><Esc>:colorscheme github<CR>
-inoremap <F6>     <Esc>:let g:airline_theme = 'github'<CR><Esc>:colorscheme github<CR>a
+noremap  <silent> <F6>    <Esc>:set background=light<CR><Esc>:let g:airline_theme = 'github'<CR><Esc>:colorscheme github<CR>
+inoremap <silent> <F6>    <Esc>:set background=light<CR><Esc>:let g:airline_theme = 'github'<CR><Esc>:colorscheme github<CR>a
 
-noremap  <F7>     <Esc>:let g:airline_theme = 'onehalfdark'<CR><Esc>:colorscheme onehalflight<CR>
-inoremap <F7>     <Esc>:let g:airline_theme = 'onehalfdark'<CR><Esc>:colorscheme onehalflight<CR>a
+noremap  <silent> <F7>    <Esc>:set background=light<CR><Esc>:let g:airline_theme = 'onehalfdark'<CR><Esc>:colorscheme onehalflight<CR>
+inoremap <silent> <F7>    <Esc>:set background=light<CR><Esc>:let g:airline_theme = 'onehalfdark'<CR><Esc>:colorscheme onehalflight<CR>a
 
-noremap  <S-F7>   <Esc>:let g:airline_theme = 'onehalflight'<CR><Esc>:colorscheme onehalfdark<CR>
-inoremap <S-F7>   <Esc>:let g:airline_theme = 'onehalflight'<CR><Esc>:colorscheme onehalfdark<CR>a
+noremap  <silent> <S-F7>  <Esc>:set background=dark<CR><Esc>:let g:airline_theme = 'onehalflight'<CR><Esc>:colorscheme onehalfdark<CR>
+inoremap <silent> <S-F7>  <Esc>:set background=dark<CR><Esc>:let g:airline_theme = 'onehalflight'<CR><Esc>:colorscheme onehalfdark<CR>a
 
-noremap  <F8>     <Esc>:let g:airline_theme = 'gruvbox'<CR><Esc>:colorscheme gruvbox<CR>
-inoremap <F8>     <Esc>:let g:airline_theme = 'gruvbox'<CR><Esc>:colorscheme gruvbox<CR>a
+noremap  <silent> <F8>    <Esc>:let g:airline_theme = 'gruvbox'<CR><Esc>:colorscheme gruvbox<CR>
+inoremap <silent> <F8>    <Esc>:let g:airline_theme = 'gruvbox'<CR><Esc>:colorscheme gruvbox<CR>a
 
 
 " =============================================================================
