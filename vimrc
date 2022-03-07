@@ -631,17 +631,17 @@ inoremap <silent> <F12> <Esc>:registers<CR>
 
 " Allows changing the width of inserted hard-TABs, as well as displayed width
 " of actual TABs on the fly, by pressing:
-"   > Shift + F1 -- 2-characters width of TAB
-"   > Shift + F2 -- 4-characters width of TAB
-"   > Shift + F3 -- 8-characters width of TAB (useful for legacy code)
-noremap  <silent> <S-F1> <Esc>:set tabstop=2 softtabstop=2 shiftwidth=2<CR>
-inoremap <silent> <S-F1> <Esc>:set tabstop=2 softtabstop=2 shiftwidth=2<CR>a
+"   > Ctrl + F1 -- 2-characters width of TAB
+"   > Ctrl + F2 -- 4-characters width of TAB
+"   > Ctrl + F3 -- 8-characters width of TAB (useful for legacy code)
+noremap  <silent> <C-F1> <Esc>:set tabstop=2 softtabstop=2 shiftwidth=2<CR>
+inoremap <silent> <C-F1> <Esc>:set tabstop=2 softtabstop=2 shiftwidth=2<CR>a
 
-noremap  <silent> <S-F2> <Esc>:set tabstop=4 softtabstop=4 shiftwidth=4<CR>
-inoremap <silent> <S-F2> <Esc>:set tabstop=4 softtabstop=4 shiftwidth=4<CR>a
+noremap  <silent> <C-F2> <Esc>:set tabstop=4 softtabstop=4 shiftwidth=4<CR>
+inoremap <silent> <C-F2> <Esc>:set tabstop=4 softtabstop=4 shiftwidth=4<CR>a
 
-noremap  <silent> <S-F3> <Esc>:set tabstop=8 softtabstop=8 shiftwidth=8<CR>
-inoremap <silent> <S-F3> <Esc>:set tabstop=8 softtabstop=8 shiftwidth=8<CR>a
+noremap  <silent> <C-F3> <Esc>:set tabstop=8 softtabstop=8 shiftwidth=8<CR>
+inoremap <silent> <C-F3> <Esc>:set tabstop=8 softtabstop=8 shiftwidth=8<CR>a
 
 " --------------------------
 
@@ -671,13 +671,21 @@ inoremap <silent> <A-Down> <Esc>:wincmd<Space>j<CR>
 " --------------------------
 
 " Manual opening / closing of tab pages:
-"   >        F2 -- will open a new [NO NAME] tab
-"   >        F4 -- will open a new file tab of given path
-"   > Ctrl + F4 -- will close the current tab page
-noremap             <F2> <Esc>:tabnew<CR>
-inoremap            <F2> <Esc>:tabnew<CR>
-noremap             <F4> <Esc>:tab drop<Space>
-inoremap            <F4> <Esc>:tab drop<Space>
+"   >         F2 -- run a command and wait for its output
+"   > Shift + F2 -- run a command silently
+noremap             <F2> <Esc>:!<Space>
+inoremap            <F2> <Esc>:!<Space>
+noremap           <S-F2> <Esc>:silent!<Space>
+inoremap          <S-F2> <Esc>:silent!<Space>
+
+" Manual opening / closing of tab pages:
+"   >         F4 -- will open a new [NO NAME] tab
+"   > Shift + F4 -- will open a new file tab of given path
+"   >  Ctrl + F4 -- will close the current tab page
+noremap  <silent>   <F4> <Esc>:tabnew<CR>
+inoremap <silent>   <F4> <Esc>:tabnew<CR>
+noremap           <S-F4> <Esc>:tab drop<Space>
+inoremap          <S-F4> <Esc>:tab drop<Space>
 noremap  <silent> <C-F4> <Esc>:tabc<CR>
 inoremap <silent> <C-F4> <Esc>:tabc<CR>
 
