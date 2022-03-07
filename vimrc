@@ -446,6 +446,9 @@ set diffopt+=iwhiteeol                    " Ignore changes in whitespaces at the
 set diffopt+=algorithm:patience           " Use same diff algorithm as in GIT [currently Patience for me].
 set diffopt+=indent-heuristic             " Use heuristic to make nicer diffs.
 
+" Shell commands execution:
+set shellcmdflag=-ic                      " Run commands in interactive shell (to recognize aliases as well).
+
 " ------------------
 " Disabled settings:
 " ------------------
