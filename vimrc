@@ -262,6 +262,14 @@ let g:pencil#wrapModeDefault = 'soft'     " Use 'soft' line breaks as default.
 let g:ansible_unindent_after_newline = 1
 let g:ansible_extra_keywords_highlight = 1
 
+" Do not automatically indent after the keys below are pressed:
+autocmd FileType yaml,yaml.ansible setlocal indentkeys-=0#
+autocmd FileType yaml,yaml.ansible setlocal indentkeys-=o
+autocmd FileType yaml,yaml.ansible setlocal indentkeys-=O
+autocmd FileType yaml,yaml.ansible setlocal indentkeys-=-
+autocmd FileType yaml,yaml.ansible setlocal indentkeys-=<:>
+autocmd FileType yaml,yaml.ansible setlocal indentkeys-=*<Return>
+
 
 " =============================================================================
 " Theme / look settings:
