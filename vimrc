@@ -683,8 +683,8 @@ inoremap <silent> <A-Down> <Esc>:wincmd<Space>j<CR>
 "   > Shift + F2 -- run a command silently
 noremap             <F2> <Esc>:!<Space>
 inoremap            <F2> <Esc>:!<Space>
-noremap           <S-F2> <Esc>:silent!<Space>
-inoremap          <S-F2> <Esc>:silent!<Space>
+noremap           <S-F2> <Esc>:silent !<Space>
+inoremap          <S-F2> <Esc>:silent !<Space>
 
 " Manual opening / closing of tab pages:
 "   >         F4 -- will open a new [NO NAME] tab
