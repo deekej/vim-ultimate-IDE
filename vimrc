@@ -547,9 +547,9 @@ map <C-Home> :echo 'hi<' . synIDattr(synID(line('.'), col('.'), 1), 'name') . '>
 " NOTE: The colors needs to be set to be in sync with your current colorscheme.
 " FIXME: Simplify the usage of this feature.
 " FIXME: Refactor this feature - use function instead?
-let ncl=0
-noremap <silent> <C-End> :let ncl=!ncl<Bar>:if ncl<Bar>:hi CursorLine cterm=NONE ctermbg=253 guibg=#D8D8DD<Bar>:else<Bar>:hi CursorLine cterm=NONE ctermbg=NONE guibg=#f7f7f7<Bar>:endif<CR>
-inoremap <silent> <C-End> :let ncl=!ncl<Bar>:if ncl<Bar>:hi CursorLine cterm=NONE ctermbg=253 guibg=#D8D8DD<Bar>:else<Bar>:hi CursorLine cterm=NONE ctermbg=NONE guibg=#f7f7f7<Bar>:endif<CR>
+"let ncl=0
+"noremap <silent> <C-S-End> :let ncl=!ncl<Bar>:if ncl<Bar>:hi CursorLine cterm=NONE ctermbg=253 guibg=#D8D8DD<Bar>:else<Bar>:hi CursorLine cterm=NONE ctermbg=NONE guibg=#f7f7f7<Bar>:endif<CR>
+"inoremap <silent> <C-S-End> :let ncl=!ncl<Bar>:if ncl<Bar>:hi CursorLine cterm=NONE ctermbg=253 guibg=#D8D8DD<Bar>:else<Bar>:hi CursorLine cterm=NONE ctermbg=NONE guibg=#f7f7f7<Bar>:endif<CR>
 
 " --------------------------
 
