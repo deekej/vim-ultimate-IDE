@@ -84,7 +84,11 @@ Plugin 'junegunn/goyo.vim'                " Adds mode for distraction-free writi
 Plugin 'wincent/terminus'                 " Better integration with terminals to close the gap between VIM & GVIM
 Plugin 'junegunn/limelight.vim'           " Enables darkening of text in other areas
 Plugin 'vim-scripts/ansiesc.vim'          " Conceals ASCII escape sequences (transforming them into colors, etc.)
-Plugin 'vim-airline/vim-airline'          " Status/tab line at the bottom of VIM
+
+if has("gui_running")
+  Plugin 'vim-airline/vim-airline'          " Status/tab line at the bottom of VIM
+endif
+
 Plugin 'vim-airline/vim-airline-themes'   " Themes for vim-airline
 
 " Themes:
@@ -172,8 +176,8 @@ let g:tagbar_indent = 2                   " Set the width of indentation in Tagb
 let g:tagbar_show_linenumbers = 1         " Show absolute line numbers for the tags in Tagbar.
 let g:tagbar_autoshowtag=1                " Automatically open VIM folds (completely) when jumping to a tag from Tagbar.
 
-" Toggle displaying of Tagbar by pressing Ctrl+M:
-map <silent> <C-M> :TagbarToggle<CR><A-Left>
+" Toggle displaying of Tagbar by pressing Ctrl+End:
+nnoremap <silent> <C-End> :TagbarToggle<CR><A-Left>
 
 " NOTE: Tagbar highlighting colors can be changed. See :help tagbar.txt - section HIGHLIGHT COLOURS.
 
