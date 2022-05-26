@@ -426,9 +426,9 @@ set linebreak                             " Break lines at whitespace instead of
 set nowrap                                " Do not wrap (break) lines by default.
 
 " Cursor navigation:
-set scrolloff=8                           " Minimum number of lines to show above/below cursor.
+set scrolloff=2                           " Minimum number of lines to show above/below cursor.
 set sidescroll=0                          " Minimum number of columns to scroll horizontally [for :set wrap].
-set sidescrolloff=4                       " Minimum number of columns to scroll horizontally [for :set nowrap].
+set sidescrolloff=2                       " Minimum number of columns to scroll horizontally [for :set nowrap].
 
 " Code folding settings:
 set foldmethod=indent                     " Folding based on file indentation.
