@@ -9,7 +9,7 @@ set guifont=MesloLGS\ NF\ 12
 "set guifont=DejaVuSansMono\ Nerd\ Font\ 12
 
 " Maximimize the gVim window for 1920x1080 / 24" monitor:
-autocmd Syntax * if &filetype !=# 'gitcommit' && &filetype !=# 'gitrebase' | set lines=53 columns=300 | endif
+autocmd Syntax * if &filetype !=# 'gitcommit' && &filetype !=# 'gitrebase' | set lines=53 columns=320 | endif
 autocmd Syntax * if &filetype ==# 'gitcommit' || &filetype ==# 'gitrebase' | set lines=53 columns=120 | endif
 
 " NOTE: Using the 'Syntax' keyword here, because processing of the commands
