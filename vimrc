@@ -54,7 +54,7 @@ Plugin 'gregsexton/gitv'                  " Repository viewer built upon 'vim-fu
 "Plugin 'jaxbot/github-issues.vim'         " Automatically populates omni-complete with Github issues
 
 " Generic Programming Support:
-Plugin 'vim-syntastic/syntastic'          " Plugin for external syntax checkers.
+Plugin 'dense-analysis/ale'               " Asynchronous Linting Engine
 Plugin 'honza/vim-snippets'               " Snippets for UltiSnips
 Plugin 'tobys/vmustache'                  " Allows usage of mustache templates in VIM
 Plugin 'neomake/neomake'                  " Asynchronous linting and make framework
@@ -129,7 +129,7 @@ let NERDTreeSortOrder = ['\/$', '\.h$', '\.hh$', '\.hpp$', '\.c$', '\.cc$', '\.c
 " Starts the NERDTree automatically and moves the cursor into its window (when not in DIFF mode):
 if !&diff
   autocmd StdinReadPre * let s:std_in=1
-  autocmd VimEnter * if &filetype !=# 'gitcommit' && &filetype !=# 'gitrebase' && v:this_session == '' | NERDTreeFind | wincmd p | endif
+  autocmd VimEnter * if &filetype !=# 'gitcommit' && &filetype !=# 'gitrebase' && v:this_session == '' && @% != "" | NERDTreeFind | wincmd p | endif
   autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists('s:std_in') | execute 'NERDTree' argv()[0] | wincmd p | enew | execute 'cd '.argv()[0] | endif
 endif
 
@@ -181,6 +181,17 @@ nnoremap <silent> <C-End> :TagbarToggle<CR><A-Left>
 
 " NOTE: Tagbar highlighting colors can be changed. See :help tagbar.txt - section HIGHLIGHT COLOURS.
 
+" -----------
+" ALE config:
+" -----------
+let g:ale_fixers = {
+\   '*': ['remove_trailing_lines', 'trim_whitespace'],
+\}
+
+let g:ale_linters = {
+\   'yaml.ansible': ['ansible-lint'],
+\}
+
 " ----------------
 " Deoplete config:
 " ---------------
@@ -198,41 +209,6 @@ endtry
 " ----------------
 let g:SuperTabMappingForward = '<C-CR>'
 let g:SuperTabMappingBackward = '<C-S-CR>'
-
-" -----------------
-" Syntastic config:
-" -----------------
-let g:syntastic_c_checkers = ['clang-check']
-let g:syntastic_cpp_checkers = ['clang-check']
-let g:syntastic_python_checkers = ['pylint']
-
-let g:syntastic_error_symbol = '✗'
-let g:syntastic_warning_symbol = '⚠'
-
-" Settings recommended for newbies to Syntastic:
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-
-" Set filetypes for which Syntastic should check syntax:
-"   active - check syntax after file is save
-"   passive - check syntax only after calling :SyntasticCheck
-let g:syntastic_mode_map = {
-    \ "mode": 'active',
-    \ "active_filetypes": ['c', 'cpp', 'python', 'php', 'sh'],
-    \ "passive_filetypes": ['perl'] }
-
-" Make the Syntastic window smaller if few than 5 errors are found:
-function! SyntasticCheckHook(errors)
-    if !empty(a:errors)
-        let g:syntastic_loc_list_height = min([len(a:errors), 5])
-    endif
-endfunction
 
 " -----------------
 " Autoclose config:
@@ -502,11 +478,7 @@ autocmd BufReadPost *
 
 " Set block-shape cursor for VIM only (workaround for VIM in old terminals):
 if !has("gui_running")
-  autocmd VimEnter * silent !echo -ne "\e[2 q"
-  autocmd VimLeave * silent !echo -ne "\e[0 q"
-
-  let &t_SI = "\e[2 q"
-  let &t_EI = "\e[2 q"
+  autocmd VimLeave * silent! !echo -ne "\e[0 q"
 endif
 
 " --------------------------
