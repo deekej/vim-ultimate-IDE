@@ -54,7 +54,6 @@ Plugin 'gregsexton/gitv'                  " Repository viewer built upon 'vim-fu
 "Plugin 'jaxbot/github-issues.vim'         " Automatically populates omni-complete with Github issues
 
 " Generic Programming Support:
-Plugin 'dense-analysis/ale'               " Asynchronous Linting Engine
 Plugin 'honza/vim-snippets'               " Snippets for UltiSnips
 Plugin 'tobys/vmustache'                  " Allows usage of mustache templates in VIM
 Plugin 'neomake/neomake'                  " Asynchronous linting and make framework
@@ -180,17 +179,6 @@ let g:tagbar_autoshowtag=1                " Automatically open VIM folds (comple
 nnoremap <silent> <C-End> :TagbarToggle<CR><A-Left>
 
 " NOTE: Tagbar highlighting colors can be changed. See :help tagbar.txt - section HIGHLIGHT COLOURS.
-
-" -----------
-" ALE config:
-" -----------
-let g:ale_fixers = {
-\   '*': ['remove_trailing_lines', 'trim_whitespace'],
-\}
-
-let g:ale_linters = {
-\   'yaml.ansible': ['ansible-lint'],
-\}
 
 " ----------------
 " Deoplete config:
