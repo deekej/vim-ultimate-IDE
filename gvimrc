@@ -2,7 +2,7 @@
 " General GUI configuration:
 " =============================================================================
 " Font used for GUI only (Vim/nVim inherits font settings from the terminal):
-set guifont=MesloLGS\ NF\ 12
+set guifont=MesloLGS\ Nerd\ Font\ 12
 
 " Supported Nerd Font alternative:
 "set guifont=Hack\ Nerd\ Font\ 12
