@@ -2,11 +2,18 @@
 " General GUI configuration:
 " =============================================================================
 " Font used for GUI only (Vim/nVim inherits font settings from the terminal):
-set guifont=MesloLGS\ Nerd\ Font\ 12
 
-" Supported Nerd Font alternative:
+" REGULAR VARIANTS - bigger, but trimmed devicons / better look:
+" --------------------------------------------------------------
+"set guifont=MesloLGS\ Nerd\ Font\ 12
 "set guifont=Hack\ Nerd\ Font\ 12
-"set guifont=DejaVuSansMono\ Nerd\ Font\ 12
+"set guifont=DejaVuSansM\ Nerd\ Font\ 12
+
+" MONO VARIANTS - working smaller devicons / worse look:
+" ------------------------------------------------------
+set guifont=MesloLGS\ Nerd\ Font\ Mono\ 12
+"set guifont=Hack\ Nerd\ Font\ Mono\ 12
+"set guifont=DejaVuSansM\ Nerd\ Font\ Mono\ 12
 
 " Maximimize the gVim window for 1920x1080 / 24" monitor:
 autocmd Syntax * if &filetype !=# 'gitcommit' && &filetype !=# 'gitrebase' | set lines=44 columns=188 | endif
